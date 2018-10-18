@@ -10,6 +10,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Git = require('nodegit');
 var figlet = require('figlet');
+var kleur = require('kleur');
 
 var BaseGenerator = function () {
     function BaseGenerator() {
@@ -20,6 +21,18 @@ var BaseGenerator = function () {
         key: 'cloneRepo',
         value: async function cloneRepo(repo, appName) {
             await Git.clone(repo, '' + appName);
+        }
+    }, {
+        key: 'display',
+        value: function display(appName, projectName) {
+            console.log(kleur.green.bold.underline('-------------------------' + appName + '---------------------------'));
+
+            figlet(projectName, function (err, data) {
+                if (err) {
+                    console.log(kleur.red.bold('something went wrong'));
+                }
+                console.log(data);
+            });
         }
     }]);
 
