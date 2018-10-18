@@ -23,8 +23,10 @@
   "dependencies": {
     "commander": "^2.19.0",
     "eslint-plugin-import": "^2.14.0",
+    "figlet": "^1.2.1",
     "kleur": "^2.0.2",
     "minimist": "^1.2.0",
-    "nodegit": "^0.22.2"
+    "nodegit": "^0.22.2",
+    "shelljs": "^0.8.2"
   }
 }
