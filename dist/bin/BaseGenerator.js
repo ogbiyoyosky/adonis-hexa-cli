@@ -1,14 +1,12 @@
-'use strict'
+'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
-})
+});
 
-var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _createClass = (function () { function defineProperties (target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor) } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor } }())
-
-function _classCallCheck (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function') } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*
  * adonis-hexa-cli
@@ -19,28 +17,28 @@ function _classCallCheck (instance, Constructor) { if (!(instance instanceof Con
  * file that was distributed with this source code.
 */
 
-var Git = require('nodegit')
-var figlet = require('figlet')
-var kleur = require('kleur')
-var execSync = require('child_process').execSync
-var minimist = require('minimist')
-var spawn = require('cross-spawn')
+var Git = require('nodegit');
+var figlet = require('figlet');
+var kleur = require('kleur');
+var execSync = require('child_process').execSync;
+var minimist = require('minimist');
+var spawn = require('cross-spawn');
 
-require('shelljs/global')
+require('shelljs/global');
 
 /**
- * The base command is supposed to be extended by
+ * The BaseGenerator is supposed to be extended by
  * every other command to work properly.
  *
  * @class Command
  * @static
  */
 
-var BaseGenerator = (function () {
-  function BaseGenerator () {
-    _classCallCheck(this, BaseGenerator)
+var BaseGenerator = function () {
+  function BaseGenerator() {
+    _classCallCheck(this, BaseGenerator);
 
-    this.chalk = kleur
+    this.chalk = kleur;
 
     /**
      * List of icons
@@ -60,7 +58,7 @@ var BaseGenerator = (function () {
        * @type {Object}
        */
 
-    }; this.iconsWin = {
+    };this.iconsWin = {
       info: this.chalk.cyan('i'),
       success: this.chalk.green('√'),
       warn: this.chalk.yellow('‼'),
@@ -70,7 +68,7 @@ var BaseGenerator = (function () {
        * Get Args
        */
 
-    }; this.args = minimist(process.argv.slice(2))
+    };this.args = minimist(process.argv.slice(2));
   }
 
   /**
@@ -86,8 +84,8 @@ var BaseGenerator = (function () {
 
   _createClass(BaseGenerator, [{
     key: 'icon',
-    value: function icon (type) {
-      return process.platform === 'win32' ? this.iconsWin[type] : this.iconsMain[type]
+    value: function icon(type) {
+      return process.platform === 'win32' ? this.iconsWin[type] : this.iconsMain[type];
     }
 
     /**
@@ -102,14 +100,15 @@ var BaseGenerator = (function () {
 
   }, {
     key: 'display',
-    value: async function display (appName, projectName) {
-      var _this = this
+    value: async function display(appName, projectName) {
+      var _this = this;
 
       try {
-        console.log(this.chalk.green.bold('-------------------------' + appName + '---------------------------'))
-        console.log(this.chalk.magenta.bold.underline('--------------------------------------------------------------'))
-        console.log(this.chalk.green.bold.underline('--------------------------------------------------------------'))
-        console.log(this.chalk.magenta.bold.underline('--------------------------------------------------------------'))
+        console.log(this.chalk.magenta.bold('-------------------------' + appName + '-----------------------------------'));
+        console.log(this.chalk.green.bold.underline('-------------------------------------------------------------------'));
+        console.log(this.chalk.green.bold.underline('---------------------------------------------------------------------'));
+        console.log(this.chalk.magenta.bold.underline('-------------------------------------------------------------------'));
+
         /**
         * Returns ascil reprensentation of text
         *
@@ -121,55 +120,80 @@ var BaseGenerator = (function () {
         */
         figlet(projectName, function (err, data) {
           if (err) {
-            console.log(kleur.red.bold('something went wrong'))
-            return
+            console.log(kleur.red.bold('something went wrong'));
+            return;
           }
-          console.log(data)
-          console.log(typeof data === 'undefined' ? 'undefined' : _typeof(data))
-        })
-        console.log(kleur.green.bold.underline('-------------------------' + projectName + '---------------------------'))
+          console.log(data);
+          console.log(_this.chalk.magenta.bold.underline('-------------------------------------------------------------------'));
+          console.log(_this.chalk.green.bold.underline('-------------------------------------------------------------------'));
+          console.log(_this.chalk.green.bold.underline('-------------------------------------------------------------------'));
+          console.log(kleur.magenta.bold.underline('-------------------------' + projectName + '---------------------------'));
+        });
 
         await Git.Clone('https://github.com/ogbiyoyosky/test-repo.git', appName).then(async function () {
-          cd(appName)
-          await _this.installingPackages(_this.args = ['install'])
-        })
+          cd(appName);
+          await _this.installingPackages(_this.args = ['install']);
+        });
       } catch (e) {
-        console.log('directory already exist')
+        console.log('directory already exist');
       }
     }
+    /**
+    * This method install the packages in the newly created adonis-hexa application
+    *
+    * @method installingPackages
+    *
+    * @async
+    *
+    * @param {String} args
+    *
+    * @return {promise}
+    */
+
   }, {
     key: 'installingPackages',
-    value: async function installingPackages (args) {
-      console.log('installing  packages------ ' + this.icon('success'))
-      return
+    value: async function installingPackages(args) {
+      console.log('installing  packages------ ' + this.icon('success'));
+      return;
       try {
-        var command = void 0
+        var command = void 0;
 
-        this.shouldUseYarn() ? command = 'yarn' : command = 'npm'
+        this.shouldUseYarn() ? command = 'yarn' : command = 'npm';
 
-        var child = spawn(command, args, { stdio: 'inherit' })
+        var child = spawn(command, args, { stdio: 'inherit' });
         child.on('close', function (code) {
           if (code !== 0) {
             reject({
               command: command + ' ' + args.join(' ')
-            })
+            });
           }
-        })
+        });
       } catch (e) {}
     }
+
+    /**
+     * This method check if yarn was used for installation
+     *
+     * @method shouldUseYarn
+     *
+     * @param {Void}
+     *
+     * @return Boolean
+     */
+
   }, {
     key: 'shouldUseYarn',
-    value: function shouldUseYarn () {
+    value: function shouldUseYarn() {
       try {
-        execSync('yarnpkg --version', { stdio: 'ignore' })
-        return true
+        execSync('yarnpkg --version', { stdio: 'ignore' });
+        return true;
       } catch (e) {
-        return false
+        return false;
       }
     }
-  }])
+  }]);
 
-  return BaseGenerator
-}())
+  return BaseGenerator;
+}();
 
-exports.default = BaseGenerator
+exports.default = BaseGenerator;

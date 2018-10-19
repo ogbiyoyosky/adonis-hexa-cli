@@ -17,7 +17,7 @@ const spawn = require('cross-spawn')
 require('shelljs/global')
 
 /**
- * The base command is supposed to be extended by
+ * The BaseGenerator is supposed to be extended by
  * every other command to work properly.
  *
  * @class Command
@@ -88,8 +88,8 @@ class BaseGenerator {
 
   async display (appName, projectName) {
     try {
-      console.log(this.chalk.green.bold(`-------------------------${appName}-----------------------------------`))
-      console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
+      console.log(this.chalk.magenta.bold(`-------------------------${appName}-----------------------------------`))
+      console.log(this.chalk.green.bold.underline(`-------------------------------------------------------------------`))
       console.log(this.chalk.green.bold.underline(`---------------------------------------------------------------------`))
       console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
 
@@ -108,12 +108,13 @@ class BaseGenerator {
           return
         }
         console.log(data)
-      })
-      console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
-      console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
-      console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
-      console.log(kleur.green.bold.underline(`-------------------------${projectName}---------------------------`))
+        console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
+        console.log(this.chalk.green.bold.underline(`-------------------------------------------------------------------`))
+        console.log(this.chalk.green.bold.underline(`-------------------------------------------------------------------`))
+        console.log(kleur.magenta.bold.underline(`-------------------------${projectName}---------------------------`))
 
+      })
+      
       await Git.Clone('https://github.com/ogbiyoyosky/test-repo.git', appName).then(
         async () => {
           cd(appName)
@@ -137,7 +138,7 @@ class BaseGenerator {
  */
   async installingPackages (args) {
     console.log(`installing  packages------ ${this.icon('success')}`)
-   
+return
     try {
       let command
 

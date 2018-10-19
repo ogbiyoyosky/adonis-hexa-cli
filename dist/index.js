@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-'use strict'
+'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
-})
+});
 
-var _createClass = (function () { function defineProperties (target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor) } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor } }())
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 /*
  * adonis-hexa-cli
@@ -16,39 +16,49 @@ var _createClass = (function () { function defineProperties (target, props) { fo
  * file that was distributed with this source code.
 */
 
-var _GenApp = require('./bin/GenApp')
+var _GenApp = require('./bin/GenApp');
 
-var _GenApp2 = _interopRequireDefault(_GenApp)
+var _GenApp2 = _interopRequireDefault(_GenApp);
 
-function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj } }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function') } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var minimist = require('minimist')
+var minimist = require('minimist');
 
-var Init = (function () {
-  function Init () {
-    _classCallCheck(this, Init)
+var Init = function () {
+  function Init() {
+    _classCallCheck(this, Init);
 
-    this.args = minimist(process.argv.slice(2))
-    this.cmd = this.args._[0] || 'help'
-    this.switchCommand(this.cmd)
+    this.args = minimist(process.argv.slice(2));
+    this.cmd = this.args._[0] || 'help';
+    this.switchCommand(this.cmd);
   }
+  /**The method listens for various command
+   * 
+   * @method
+   * 
+   * @param {String} cmd 
+   * 
+   * @return class
+   * 
+   */
+
 
   _createClass(Init, [{
     key: 'switchCommand',
-    value: function switchCommand (cmd) {
-      switch (this.cmd) {
+    value: function switchCommand(cmd) {
+      switch (cmd) {
         case 'new':
-          new _GenApp2.default(this.args)
-          break
+          new _GenApp2.default(this.args);
+          break;
       }
     }
-  }])
+  }]);
 
-  return Init
-}())
+  return Init;
+}();
 
-new Init()
+new Init();
 
-exports.default = Init
+exports.default = Init;
