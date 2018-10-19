@@ -88,10 +88,10 @@ class BaseGenerator {
 
   async display (appName, projectName) {
     try {
-      console.log(this.chalk.magenta.bold(`-------------------------${appName}-----------------------------------`))
-      console.log(this.chalk.green.bold.underline(`-------------------------------------------------------------------`))
-      console.log(this.chalk.green.bold.underline(`---------------------------------------------------------------------`))
-      console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
+      console.log(this.chalk.gray.bold(`------------------------- ${this.chalk.cyan(appName)} -----------------------------------`))
+      console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
+      console.log(this.chalk.gray.bold(`---------------------------------------------------------------------`))
+      console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
 
       /**
  * Returns ascil reprensentation of text
@@ -104,25 +104,27 @@ class BaseGenerator {
  */
       figlet(projectName, (err, data) => {
         if (err) {
-          console.log(kleur.red.bold('something went wrong'))
+          console.log(this.chalk.red.bold('something went wrong'))
           return
         }
         console.log(data)
-        console.log(this.chalk.magenta.bold.underline(`-------------------------------------------------------------------`))
-        console.log(this.chalk.green.bold.underline(`-------------------------------------------------------------------`))
-        console.log(this.chalk.green.bold.underline(`-------------------------------------------------------------------`))
-        console.log(kleur.magenta.bold.underline(`-------------------------${projectName}---------------------------`))
+        console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
+        console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
+        console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
+        
 
       })
       
       await Git.Clone('https://github.com/ogbiyoyosky/test-repo.git', appName).then(
         async () => {
           cd(appName)
-          await this.installingPackages(this.args = ['install'])
+          await this.installingPackages(this.args = ['install']).then(
+            console.log(`${this.chalk.bold.green.italic('Successfully installed            ')} ${this.icon('success')}`)
+          )
         }
       )
     } catch (e) {
-      console.log('directory already exist')
+      console.log(console.log(`${this.chalk.bold.red.italic('diectory already exit          ')} ${this.icon('error')}`))
     }
   }
   /**
@@ -137,7 +139,15 @@ class BaseGenerator {
  * @return {promise}
  */
   async installingPackages (args) {
-    console.log(`installing  packages------ ${this.icon('success')}`)
+    
+      console.log(`${this.chalk.bold.green.italic('Creating project directory        ')} ${this.icon('success')}`)
+  
+
+    
+      console.log(`${this.chalk.bold.green.italic('Cloning from repository           ')} ${this.icon('success')}`)
+   
+    
+    
 return
     try {
       let command

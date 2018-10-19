@@ -33,7 +33,7 @@ class GenApp extends BaseGenerator {
    *
    * @method installing
    *
-   * @param {*} appName
+   * @param {String} appName
    *
    * @returns function
    */
