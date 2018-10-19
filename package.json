@@ -9,7 +9,8 @@
     "babel-node": "babel-node --presets=es2015",
     "build": "rimraf dist/ && babel app --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "dev-server": "nodemon --exec npm run babel-node && standard -- app/index.js ",
-    "start": " npm run build && node dist/index.js"
+    "start": " npm run build && node dist/index.js",
+    "lint": "standard --fix"
   },
   "author": "freeman ogbiyoyo",
   "license": "SEE LICENSE IN LICENSE.md",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "commander": "^2.19.0",
+    "cross-spawn": "^6.0.5",
     "eslint-plugin-import": "^2.14.0",
     "figlet": "^1.2.1",
     "kleur": "^2.0.2",

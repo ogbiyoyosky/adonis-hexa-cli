@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -19,30 +19,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var GenApp = function (_BaseGenerator) {
-    _inherits(GenApp, _BaseGenerator);
+  _inherits(GenApp, _BaseGenerator);
 
-    function GenApp(args) {
-        _classCallCheck(this, GenApp);
+  function GenApp(args) {
+    _classCallCheck(this, GenApp);
 
-        var _this = _possibleConstructorReturn(this, (GenApp.__proto__ || Object.getPrototypeOf(GenApp)).call(this, args));
+    var _this = _possibleConstructorReturn(this, (GenApp.__proto__ || Object.getPrototypeOf(GenApp)).call(this, args));
 
-        _this.args = args;
-        _this.appName = args.appName || _this.args._[1];
-        console.log(_this.appName);
-        _this.installing(_this.appName);
+    _this.args = args;
+    _this.appName = args.appName || _this.args._[1];
+    _this.installing(_this.appName);
+    return _this;
+  }
 
-        return _this;
+  _createClass(GenApp, [{
+    key: 'installing',
+    value: function installing(appName) {
+      this.display(appName, 'Adonis Hexa');
     }
+  }]);
 
-    _createClass(GenApp, [{
-        key: 'installing',
-        value: function installing(appName) {
-
-            this.display(appName, 'Adonis Hexa');
-        }
-    }]);
-
-    return GenApp;
+  return GenApp;
 }(_BaseGenerator3.default);
 
 exports.default = GenApp;
