@@ -9,7 +9,7 @@ class GenApp extends BaseGenerator {
   }
 
   installing (appName) {
-    this.display(appName, 'Adonis Hexa');
+    this.display(appName, 'Adonis Hexa')
   }
 }
 export default GenApp

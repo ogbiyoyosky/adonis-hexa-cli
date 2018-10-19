@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
+/*
+ * adonis-hexa-cli
+ *
+ * (c) Emmanuel Ogbiyoyo <ogbiyoyosky@yahoo.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+*/
+
 import GenApp from './bin/GenApp'
 const minimist = require('minimist')
 
