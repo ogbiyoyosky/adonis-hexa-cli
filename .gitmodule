@@ -1,3 +1,0 @@
-[submodule "NewApp"]
-    path = NewApp
-    url = git://github.com/ogbiyoyosky/adonis-hexa-cli.git
