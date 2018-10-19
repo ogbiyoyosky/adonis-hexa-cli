@@ -13,6 +13,8 @@ const kleur = require('kleur')
 const execSync = require('child_process').execSync
 const minimist = require('minimist')
 const spawn = require('cross-spawn')
+const mustache = require('mustache');
+const fs = require('fs-extra');
 
 require('shelljs/global')
 
@@ -20,11 +22,12 @@ require('shelljs/global')
  * The BaseGenerator is supposed to be extended by
  * every other command to work properly.
  *
- * @class Command
+ * @class BaseGenerator
  * @static
  */
 
 class BaseGenerator {
+
   constructor () {
     this.chalk = kleur
 
@@ -168,7 +171,7 @@ return
   }
 
   /**
-   * This method check if yarn was used for installation
+   * This method checks if Yarn was used in package installation.
    *
    * @method shouldUseYarn
    *
@@ -184,5 +187,184 @@ return
       return false
     }
   }
+
+  emptyDir (dir) {
+    return fs.emptyDir(dir)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Make sure the file exists, otherwise create the
+   * empty file.
+   *
+   * @method ensureFile
+   * @async
+   *
+   * @param  {String}   file
+   *
+   * @return {Promise}
+   */
+  ensureFile (file) {
+    return fs.ensureFile(file)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Ensure a directory exists or create one
+   *
+   * @method ensureDir
+   * @async
+   *
+   * @param  {String}  dir
+   *
+   * @return {Promise}
+   */
+  ensureDir (dir) {
+    return fs.ensureDir(dir)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Returns a boolean indicating whether file
+   * exists or not.
+   *
+   * @method pathExists
+   * @async
+   *
+   * @param  {String}   file
+   *
+   * @return {Promise}
+   */
+  pathExists (file) {
+    return fs.pathExists(file)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Removes the file from the disk
+   *
+   * @method removeFile
+   * @async
+   *
+   * @param  {String}   file
+   *
+   * @return {Promise}
+   */
+  removeFile (file) {
+    return fs.remove(file)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Read file from the disk
+   *
+   * @method readFile
+   * @async
+   *
+   * @param  {String} file
+   * @param  {String} [encoding]
+   *
+   * @return {String}
+   */
+  readFile (file, encoding) {
+    return fs.readFile(file, encoding)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Removes directory
+   *
+   * @method removeDir
+   * @async
+   *
+   * @param  {String}  dir
+   *
+   * @return {Promsie}
+   */
+  removeDir (dir) {
+    return fs.remove(dir)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Copy file from src directory to destination
+   *
+   * @method copy
+   * @async
+   *
+   * @param  {String} src
+   * @param  {String} dest
+   * @param  {Object} [options = {}]
+   *
+   * @return {Promise}
+   */
+  copy (src, dest, options) {
+    return fs.copy(src, dest, options)
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Move file from src directory to destination
+   *
+   * @method move
+   * @async
+   *
+   * @param  {String} src
+   * @param  {String} dest
+   * @param  {Object} [options = {}]
+   *
+   * @return {Promise}
+   */
+  move (src, dest, options) {
+    return fs.move(src, dest, options)
+  }
+
+  /**
+   * Generate file from a mustache template. In the process
+   * it will make sure that file does not exists before
+   * creating it.
+   *
+   * @method generateFile
+   * @async
+   *
+   * @param  {String}     file
+   * @param  {String}     template
+   * @param  {Object}     data
+   *
+   * @return {Promise}
+   *
+   * @throws {Error} If file already exists.
+   */
+  async generateFile (file, template, data) {
+    const exists = await this.pathExists(file)
+    if (exists) {
+      throw new Error(`${file} already exists`)
+    }
+
+    const output = mustache.render(template, data)
+    return this.writeFile(file, output)
+  }
+
+  /**
+   * Write file to a given location if parent
+   * directory/directories does not exists
+   * they will be created
+   *
+   * @method writeFile
+   * @async
+   *
+   * @param  {String}  file
+   * @param  {String}  content
+   * @param  {Object}  options
+   *
+   * @return {Promise}
+   */
+  writeFile (file, content, options) {
+    return fs.outputFile(file, content, options)
+  }
+
+
+
 }
+
 export default BaseGenerator
