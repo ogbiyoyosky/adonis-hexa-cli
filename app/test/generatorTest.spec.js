@@ -1,11 +1,12 @@
 
+import BaseGenerator from '../bin/BaseGenerator'
 const test = require('japa');
-const path = require('path')
-import BaseGenerator from "../bin/BaseGenerator"
+const path = require('path');
 
-test.group('Generator', (group)=>{
-  group.beforeEach(()=>{
-    
+
+test.group('Generator', (group) => {
+  group.beforeEach(() => {
+
   })
 
   test('throw exception when file already exists', async (assert) => {
@@ -21,6 +22,4 @@ test.group('Generator', (group)=>{
 
     await gen.removeFile(path.join(__dirname, 'sample.js'))
   })
-  
-}) 
-
+})

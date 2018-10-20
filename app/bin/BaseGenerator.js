@@ -13,8 +13,9 @@ const kleur = require('kleur')
 const execSync = require('child_process').execSync
 const minimist = require('minimist')
 const spawn = require('cross-spawn')
-const mustache = require('mustache');
-const fs = require('fs-extra');
+const mustache = require('mustache')
+const fs = require('fs-extra')
+
 
 require('shelljs/global')
 
@@ -27,7 +28,6 @@ require('shelljs/global')
  */
 
 class BaseGenerator {
-
   constructor () {
     this.chalk = kleur
 
@@ -114,13 +114,18 @@ class BaseGenerator {
         console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
         console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
         console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
-        
-
       })
-      
+
       await Git.Clone('https://github.com/ogbiyoyosky/test-repo.git', appName).then(
         async () => {
           cd(appName)
+          setTimeout(()=>{
+            
+          },2000)
+          console.log(`${this.chalk.bold.green.italic('Creating project directory        ')} ${this.icon('success')}`)
+
+          console.log(`${this.chalk.bold.green.italic('Cloning from repository           ')} ${this.icon('success')}`)
+
           await this.installingPackages(this.args = ['install']).then(
             console.log(`${this.chalk.bold.green.italic('Successfully installed            ')} ${this.icon('success')}`)
           )
@@ -137,21 +142,12 @@ class BaseGenerator {
  *
  * @async
  *
- * @param {String} args
+ * @param [String] args
  *
  * @return {promise}
  */
   async installingPackages (args) {
-    
-      console.log(`${this.chalk.bold.green.italic('Creating project directory        ')} ${this.icon('success')}`)
   
-
-    
-      console.log(`${this.chalk.bold.green.italic('Cloning from repository           ')} ${this.icon('success')}`)
-   
-    
-    
-return
     try {
       let command
 
@@ -166,7 +162,7 @@ return
         }
       })
     } catch (e) {
-
+      process.exit(1);
     }
   }
 
@@ -223,7 +219,7 @@ return
     return fs.ensureDir(dir)
   }
 
-  /* istanbul ignore next */
+ 
   /**
    * Returns a boolean indicating whether file
    * exists or not.
@@ -239,7 +235,7 @@ return
     return fs.pathExists(file)
   }
 
-  /* istanbul ignore next */
+  
   /**
    * Removes the file from the disk
    *
@@ -254,7 +250,7 @@ return
     return fs.remove(file)
   }
 
-  /* istanbul ignore next */
+ 
   /**
    * Read file from the disk
    *
@@ -362,9 +358,6 @@ return
   writeFile (file, content, options) {
     return fs.outputFile(file, content, options)
   }
-
-
-
 }
 
 export default BaseGenerator

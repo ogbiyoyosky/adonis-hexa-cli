@@ -9,30 +9,35 @@
  * file that was distributed with this source code.
 */
 
-import GenApp from './bin/GenApp'
+import GenApp from './bin/GenApp';
+import Version from './bin/Version'
 const minimist = require('minimist')
 
+
 class Init {
-  
   constructor () {
     this.args = minimist(process.argv.slice(2))
     this.cmd = this.args._[0] || 'help'
     this.switchCommand(this.cmd)
   }
-/**The method listens for various command
- * 
+  /** The method listens for various command
+ *
  * @method
- * 
- * @param {String} cmd 
- * 
+ *
+ * @param {String} cmd
+ *
  * @return class
- * 
+ *
  */
   switchCommand (cmd) {
     switch (cmd) {
       case 'new':
         new GenApp(this.args)
         break
+        case 'version':
+        new Version(this.args)
+        break
+      
     }
   }
 }(new Init())
