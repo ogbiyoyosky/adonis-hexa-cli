@@ -9,12 +9,10 @@
  * file that was distributed with this source code.
 */
 
-import GenApp from './bin/GenApp';
-import Version from './bin/Version';
-import Help from './bin/Help';
+import GenApp from './bin/GenApp'
+import Version from './bin/Version'
+import Help from './bin/Help'
 const minimist = require('minimist')
-
-
 
 class Init {
   constructor () {
@@ -36,11 +34,11 @@ class Init {
       case 'new':
         new GenApp(this.args)
         break
-        case 'version':
+      case 'version':
         new Version(this.args)
         break
-        case 'help':
-        new Help(this.args);
+      case 'help':
+        new Help(this.args)
         break
     }
   }
