@@ -115,7 +115,7 @@ class BaseGenerator {
         console.log(this.chalk.gray.bold(`-------------------------------------------------------------------`))
       })
 
-      await Git.Clone('https://github.com/ogbiyoyosky/test-repo.git', appName).then(
+      await Git.Clone('https://github.com/creatrixity/adonis-hexa', appName).then(
         async () => {
           cd(appName)
 

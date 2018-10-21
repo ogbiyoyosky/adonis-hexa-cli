@@ -4,7 +4,7 @@
   "description": "A cli tool for adonis hexa.",
   "main": "index.js",
   "bin": "dist/index.js",
-  "repostory": "https://github.com/ogbiyoyosky/adonis-hexa-cli",
+  "repository": "https://github.com/ogbiyoyosky/adonis-hexa-cli",
   "scripts": {
     "test": "node dist/test/generatorTest.spec.js",
     "babel-node": "babel-node --presets=es2015",
