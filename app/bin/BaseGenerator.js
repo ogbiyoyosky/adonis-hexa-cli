@@ -16,7 +16,6 @@ const spawn = require('cross-spawn')
 const mustache = require('mustache')
 const fs = require('fs-extra')
 
-
 require('shelljs/global')
 
 /**
@@ -119,9 +118,9 @@ class BaseGenerator {
       await Git.Clone('https://github.com/ogbiyoyosky/test-repo.git', appName).then(
         async () => {
           cd(appName)
-          setTimeout(()=>{
-            
-          },2000)
+          setTimeout(() => {
+
+          }, 2000)
           console.log(`${this.chalk.bold.green.italic('Creating project directory        ')} ${this.icon('success')}`)
 
           console.log(`${this.chalk.bold.green.italic('Cloning from repository           ')} ${this.icon('success')}`)
@@ -147,7 +146,6 @@ class BaseGenerator {
  * @return {promise}
  */
   async installingPackages (args) {
-
     try {
       let command
 
@@ -162,7 +160,7 @@ class BaseGenerator {
         }
       })
     } catch (e) {
-      process.exit(1);
+      process.exit(1)
     }
   }
 
@@ -219,7 +217,6 @@ class BaseGenerator {
     return fs.ensureDir(dir)
   }
 
- 
   /**
    * Returns a boolean indicating whether file
    * exists or not.
@@ -235,7 +232,6 @@ class BaseGenerator {
     return fs.pathExists(file)
   }
 
-  
   /**
    * Removes the file from the disk
    *
@@ -250,7 +246,6 @@ class BaseGenerator {
     return fs.remove(file)
   }
 
- 
   /**
    * Read file from the disk
    *

@@ -1,8 +1,7 @@
 
 import BaseGenerator from '../bin/BaseGenerator'
-const test = require('japa');
-const path = require('path');
-
+const test = require('japa')
+const path = require('path')
 
 test.group('Generator', (group) => {
   group.beforeEach(() => {

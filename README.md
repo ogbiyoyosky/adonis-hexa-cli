@@ -35,12 +35,46 @@ adonis serve --dev
 ## Moving Forward
 Checkout the [official documentation](http://github.com/creatrixity/adonis-hexa) on Adonis Hexa github repository.
 
+# Tests
+
+To run the test suite, first install the dependencies, then run npm test:
+
+```bash
+npm install
+npm test
+```
+
+# Running the Development Server for contribution
+
+```bash
+npm run dev-server
+```
+
+# Running Build for for testing.
+
+```bash
+npm run build
+```
+
+# Running Standard for indenting
+
+```bash 
+npm run lint
+```
+
+## Contributing
+
+Contributions are welcome! Check out the [issues](https://github.com/creatrixity/adonis-hexa/issues) or the [PRs](https://github.com/creatrixity/adonis-hexa/pull-requests), and make your own if you want something that you don't see there.
+
+## License
+
+[GPLv3.0](https://github.com/ogbiyoyosky/adonis-hexa-cli)
 ## Meta
 
 
 Checkout [LICENSE.txt](LICENSE.txt) for license information
 
- Emmanuel Freeman Ogbiyoyo (sirfreeman) - [https://github.com/ogbiyoyosky](https://github.com/ogbiyoyosky)
+Emmanuel Freeman Ogbiyoyo (sirfreeman) - [https://github.com/ogbiyoyosky](https://github.com/ogbiyoyosky)
 
 [appveyor-image]: https://img.shields.io/appveyor/ci/thetutlage/adonis-cli/master.svg?style=flat-square
 
