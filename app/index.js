@@ -10,8 +10,10 @@
 */
 
 import GenApp from './bin/GenApp';
-import Version from './bin/Version'
+import Version from './bin/Version';
+import Help from './bin/Help';
 const minimist = require('minimist')
+
 
 
 class Init {
@@ -37,7 +39,9 @@ class Init {
         case 'version':
         new Version(this.args)
         break
-      
+        case 'help':
+        new Help(this.args);
+        break
     }
   }
 }(new Init())

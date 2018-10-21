@@ -3,12 +3,12 @@
   "version": "3.0.0",
   "description": "A cli tool for adonis hexa.",
   "main": "index.js",
-  "bin": "app/index.js",
+  "bin": "dist/index.js",
   "scripts": {
     "test": "node dist/test/generatorTest.spec.js",
     "babel-node": "babel-node --presets=es2015",
     "build": "rimraf dist/ && babel app --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "dev-server": "nodemon --exec npm run babel-node && standard -- app/index.js ",
+    "dev-server": "nodemon --exec npm run babel-node && standard--fix -- app/index.js ",
     "start": " npm run build && node dist/index.js",
     "lint": "standard --fix"
   },
