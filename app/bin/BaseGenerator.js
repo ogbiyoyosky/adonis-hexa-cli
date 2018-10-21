@@ -147,7 +147,6 @@ class BaseGenerator {
  * @return {promise}
  */
   async installingPackages (args) {
-    return
 
     try {
       let command
