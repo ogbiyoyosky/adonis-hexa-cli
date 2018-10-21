@@ -118,15 +118,17 @@ class BaseGenerator {
       await Git.Clone('https://github.com/ogbiyoyosky/test-repo.git', appName).then(
         async () => {
           cd(appName)
-          setTimeout(() => {
 
-          }, 2000)
           console.log(`${this.chalk.bold.green.italic('Creating project directory        ')} ${this.icon('success')}`)
 
           console.log(`${this.chalk.bold.green.italic('Cloning from repository           ')} ${this.icon('success')}`)
 
-          await this.installingPackages(this.args = ['install']).then(
+          await this.installingPackages(this.args = ['install']).then(() => {
             console.log(`${this.chalk.bold.green.italic('Successfully installed            ')} ${this.icon('success')}`)
+            console.log(`${this.chalk.bold.magenta.italic(`Cd into ${appName}                     `)} ${this.icon('info')}`)
+            console.log(`${this.chalk.bold.magenta.italic(`run the command npm serve --dev     `)} ${this.icon('info')}`)
+          }
+
           )
         }
       )
@@ -146,6 +148,7 @@ class BaseGenerator {
  * @return {promise}
  */
   async installingPackages (args) {
+    
     try {
       let command
 
