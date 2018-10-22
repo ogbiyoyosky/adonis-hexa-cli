@@ -11,7 +11,7 @@ Adonis cli is built on top of commander.js, which is a command line interface to
 ## Installation
 You can install the package from npm.
 ```bash
-npm i --global adonis-hexa-cli@latest
+npm i --global adonis-hexa@latest
 ```
 
 ## Next
