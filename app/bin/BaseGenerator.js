@@ -118,6 +118,7 @@ class BaseGenerator {
       await Git.Clone('https://github.com/creatrixity/adonis-hexa', appName).then(
         async () => {
           cd(appName)
+          this.removeDir(".git");
 
           console.log(`${this.chalk.bold.green.italic('Creating project directory        ')} ${this.icon('success')}`)
 
@@ -148,7 +149,6 @@ class BaseGenerator {
  * @return {promise}
  */
   async installingPackages (args) {
-    
     try {
       let command
 
@@ -159,7 +159,8 @@ class BaseGenerator {
         if (code !== 0) {
           reject({
             command: `${command} ${args.join(' ')}`
-          })
+          });
+          
         }
       })
     } catch (e) {
