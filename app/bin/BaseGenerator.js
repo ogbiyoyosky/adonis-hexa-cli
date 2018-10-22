@@ -152,7 +152,7 @@ class BaseGenerator {
     try {
       let command
 
-      this.shouldUseYarn() ? command = 'yarn' : command = 'npm'
+      this.shouldUseYarn() ? command = 'npm' : command = 'npm'
 
       const child = spawn(command, args, { stdio: 'inherit' })
       child.on('close', code => {
