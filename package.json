@@ -1,6 +1,6 @@
 {
   "name": "adonis-hexa",
-  "version": "3.2.0",
+  "version": "3.2.3",
   "description": "A cli tool for adonis hexa.",
   "main": "index.js",
   "bin": "dist/index.js",

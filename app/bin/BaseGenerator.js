@@ -118,6 +118,7 @@ class BaseGenerator {
       await Git.Clone('https://github.com/creatrixity/adonis-hexa', appName).then(
         async () => {
           cd(appName)
+          this.removeDir(".git");
 
           console.log(`${this.chalk.bold.green.italic('Creating project directory        ')} ${this.icon('success')}`)
 
@@ -148,18 +149,18 @@ class BaseGenerator {
  * @return {promise}
  */
   async installingPackages (args) {
-    
     try {
       let command
 
-      this.shouldUseYarn() ? command = 'yarn' : command = 'npm'
+      this.shouldUseYarn() ? command = 'npm' : command = 'npm'
 
       const child = spawn(command, args, { stdio: 'inherit' })
       child.on('close', code => {
         if (code !== 0) {
           reject({
             command: `${command} ${args.join(' ')}`
-          })
+          });
+          
         }
       })
     } catch (e) {
