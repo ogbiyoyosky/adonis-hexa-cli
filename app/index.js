@@ -11,6 +11,7 @@
 
 import GenApp from './bin/GenApp'
 import Version from './bin/Version'
+import TemplateGenerator from './bin/TemplateGenerator'
 import Help from './bin/Help'
 const minimist = require('minimist')
 
@@ -39,6 +40,9 @@ class Init {
         break
       case 'help':
         new Help(this.args)
+        break
+      case 'make:service':
+        new TemplateGenerator(this.args)
         break
     }
   }

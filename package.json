@@ -1,6 +1,6 @@
 {
   "name": "adonis-hexa",
-  "version": "3.2.3",
+  "version": "3.2.6",
   "description": "A cli tool for adonis hexa.",
   "main": "index.js",
   "bin": "dist/index.js",
@@ -35,7 +35,7 @@
     "minimist": "^1.2.0",
     "mocha": "^5.2.0",
     "mustache": "^3.0.0",
-    "nodegit": "^0.22.2",
+    "nodegit": "^0.24.3",
     "shelljs": "^0.8.2"
   }
 }

@@ -9,7 +9,7 @@
 
 const Git = require('nodegit')
 const figlet = require('figlet')
-const kleur = require('kleur')
+ 
 const execSync = require('child_process').execSync
 const minimist = require('minimist')
 const spawn = require('cross-spawn')
